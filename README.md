@@ -11,6 +11,10 @@ To run command for example `:ComposerRun validate` run command validate for your
 ```
 This command exec the installation flow of composer's install. This process require `curl`
 
+```vim
+:ComposerInstall [--no-dev ..]
+```
+This command exec `composer install`
 
 ## Install
 ```vim
