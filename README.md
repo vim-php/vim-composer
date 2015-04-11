@@ -1,8 +1,16 @@
 # vim composer
 Manage [composer](https://getcomposer.org) in Vim
+
 ```vim
 :ComposerRun <args>
 ```
+To run command for example `:ComposerRun validate` run command validate for your json
+
+```vim
+:ComposerGet
+```
+This command exec the installation flow of composer's install. This process require `curl`
+
 
 ## Install
 ```vim
