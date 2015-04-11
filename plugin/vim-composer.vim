@@ -22,6 +22,7 @@ if !exists("g:composer_cmd")
 endif
 
 command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
+command! -narg=* ComposerInstall call s:ComposerRunFunc("install ".<q-args>)
 command! ComposerGet call s:ComposerGetFunc()
 
 function! s:ComposerRunFunc(arg)
