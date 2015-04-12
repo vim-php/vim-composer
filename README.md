@@ -16,6 +16,11 @@ This command exec the installation flow of composer's install. This process requ
 ```
 This command exec `composer install`
 
+```vim
+:ComposerJSON
+```
+This command open `composer.json`
+
 ## Install
 ```vim
 Bundle 'vim-php/vim-composer'
