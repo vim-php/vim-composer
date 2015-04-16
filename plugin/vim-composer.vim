@@ -24,6 +24,7 @@ endif
 command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
 command! -narg=* ComposerInstall call s:ComposerRunFunc("install ".<q-args>)
 command! ComposerGet call s:ComposerGetFunc()
+command! ComposerJSON call s:OpenComposerJSON()
 
 function! s:ComposerRunFunc(arg)
     let s:arg = a:arg
@@ -32,4 +33,12 @@ endfunction
 
 function! s:ComposerGetFunc()
     exe "! curl -Ss https://getcomposer.org/installer | php"
+endfunction
+
+function! s:OpenComposerJSON()
+    if filereadable("./composer.json")
+        exe "vsplit ./composer.json"
+    else
+        echo "Composer json doesn't exist"
+    endif
 endfunction
