@@ -21,8 +21,9 @@ if !exists("g:composer_cmd")
     endif
 endif
 
+
 command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
-command! -narg=* ComposerInstall call s:ComposerRunFunc("install ".<q-args>)
+command! -narg=* ComposerInstall call s:ComposerInstallFunc(<q-args>)
 command! ComposerGet call s:ComposerGetFunc()
 command! ComposerJSON call s:OpenComposerJSON()
 
@@ -40,5 +41,16 @@ function! s:OpenComposerJSON()
         exe "vsplit ./composer.json"
     else
         echo "Composer json doesn't exist"
+    endif
+endfunction
+
+if !exists("g:composer_install_callback")
+    let g:composer_install_callback = ""
+endif
+
+function! s:ComposerInstallFunc(arg)
+    exe s:ComposerRunFunc("install")
+    if len(g:composer_install_callback) > 0
+        exe "call ".g:composer_install_callback."()"
     endif
 endfunction
