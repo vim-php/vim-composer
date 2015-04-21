@@ -14,12 +14,20 @@ This command exec the installation flow of composer's install. This process requ
 ```vim
 :ComposerInstall [--no-dev ..]
 ```
-This command exec `composer install`
+This command exec `composer install`. Now you can attach after this command a custom callback to exec your personal flow.
+```vim
+function! MyCallbackFunction()
+    exec ':silent ! ctags -a %'
+endfunction
+let g:composer_install_callback = "MyCallbackFunction"
+```
+In this example after every `composer install` I exec a ctags generation
 
 ```vim
 :ComposerJSON
 ```
 This command open `composer.json`
+
 
 ## Install
 ```vim
