@@ -1,0 +1,79 @@
+*composer.txt* refactoring tools for PHP
+
+                PHP COMPOSER SUPPORT FOR VIM
+    (requires https://github.com/vim-php/vim-composer)
+
+================================================================================
+CONTENTS                                                   *VimComposerContents*
+
+1. Setup ............................. |VimComposerSetup|
+2. Usage ............................. |VimComposerUsage|
+4. License ........................... |VimComposerLicense|
+5. Contributing ...................... |VimComposerContrib|
+
+================================================================================
+SETUP                                                   *VimComposerSetup*
+
+Manage composer https://getcomposer.org in Vim
+
+Bundle 'vim-php/vim-composer'
+
+This plugin support an autodetach test to check the correct path of composer.phar
+If this check fails you can try to force correct path
+
+let g:composer_cmd = "/usr/bin/composer"
+
+================================================================================
+USAGE                                                   *VimComposerUsage*
+
+:ComposerRun <args>
+To run command for example `:ComposerRun validate` run command validate for your json
+
+:ComposerGet
+This command exec the installation flow of composer's install. This process require `curl`
+
+:ComposerInstall [--no-dev ..]
+This command exec `composer install`. Now you can attach after this command a custom callback to exec your personal flow.
+
+function! MyCallbackFunction()
+    exec ':silent ! ctags -a %'
+endfunction
+let g:composer_install_callback = "MyCallbackFunction"
+
+In this example after every `composer install` I exec a ctags generation
+
+:ComposerJSON
+This command open `composer.json`
+
+================================================================================
+LICENSE                                                     *VimComposerLicense*
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Gianluca Arbezzano
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+================================================================================
+CONTRIBUTING                                                *VimComposerContrib*
+
+https://github.com/vim-php/vim-composer
+This plugin is very easy, there is a lot of space for community update, feedback and
+features request.
+Help me with issues and PRs!
+Thanks!
