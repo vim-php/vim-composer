@@ -54,3 +54,8 @@ function! s:ComposerInstallFunc(arg)
         exe "call ".g:composer_install_callback."()"
     endif
 endfunction
+
+function! s:ComposerKnowWhereCurrentFileIs()
+    let l:currentWord = explode('<cword>')
+    exec "!grep ClassNameToFind ../onebip/vendor/composer -R | awk '{print $6}' | awk -F\' '{print $2}'"
+endfunction
