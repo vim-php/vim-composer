@@ -58,7 +58,7 @@ endfunction
 map <F6>  :call ComposerKnowWhereCurrentFileIs()<CR>
 function! ComposerKnowWhereCurrentFileIs()
     let l:currentWord = expand('<cword>')
-    let l:command = "grep " . l:currentWord . " vendor/composer -R | awk '{print $6}' | awk -F\\' '{print $2}'"
+    let l:command = "grep " . l:currentWord . " ./vendor/composer -R | awk '{print $6}' | awk -F\\' '{print $2}'"
     let l:commandFileFound = l:command . ' | wc -l'
     let l:numberOfResults = system(l:commandFileFound)
     if l:numberOfResults == 1
@@ -66,6 +66,6 @@ function! ComposerKnowWhereCurrentFileIs()
         let l:openFileCommand = 'tabe ' g:project_path . l:fileName
         exec l:openFileCommand
     else
-        exec "normal \<c-p>" . expand('<cword>')
+        echo "No unique file found in composer's generated files"
     endif
 endfunction
