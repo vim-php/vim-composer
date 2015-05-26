@@ -54,3 +54,17 @@ function! s:ComposerInstallFunc(arg)
         exe "call ".g:composer_install_callback."()"
     endif
 endfunction
+
+function! ComposerKnowWhereCurrentFileIs()
+    let l:currentWord = expand('<cword>')
+    let l:command = "grep " . l:currentWord . " ./vendor/composer -R | awk '{print $6}' | awk -F\\' '{print $2}'"
+    let l:commandFileFound = l:command . ' | wc -l'
+    let l:numberOfResults = system(l:commandFileFound)
+    if l:numberOfResults == 1
+        let l:fileName = system(l:command)
+        let l:openFileCommand = 'tabe ' g:project_path . l:fileName
+        exec l:openFileCommand
+    else
+        echo "No unique file found in composer's generated files"
+    endif
+endfunction
