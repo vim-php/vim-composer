@@ -55,7 +55,6 @@ function! s:ComposerInstallFunc(arg)
     endif
 endfunction
 
-map <F6>  :call ComposerKnowWhereCurrentFileIs()<CR>
 function! ComposerKnowWhereCurrentFileIs()
     let l:currentWord = expand('<cword>')
     let l:command = "grep " . l:currentWord . " ./vendor/composer -R | awk '{print $6}' | awk -F\\' '{print $2}'"
