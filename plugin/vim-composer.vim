@@ -62,7 +62,7 @@ function! ComposerKnowWhereCurrentFileIs()
     let l:numberOfResults = system(l:commandFileFound)
     if l:numberOfResults == 1
         let l:fileName = system(l:command)
-        let l:openFileCommand = 'tabe ' g:project_path . l:fileName
+        let l:openFileCommand = 'tabe .' . l:fileName
         exec l:openFileCommand
     else
         echo "No unique file found in composer's generated files"
