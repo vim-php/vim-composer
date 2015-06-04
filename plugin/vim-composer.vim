@@ -55,12 +55,12 @@ function! s:ComposerInstallFunc(arg)
     endif
 endfunction
 
-function! ComposerKnowWhereCurrentFileIs()
-    let l:currentWord = expand('<cword>')
-    let l:command = "grep " . l:currentWord . " ./vendor/composer -R | awk '{print $6}' | awk -F\\' '{print $2}'"
+function! g:ComposerKnowWhereCurrentFileIs()
+    let g:currentWord = expand('<cword>')
+    let l:command = "grep " . g:currentWord . " ./vendor/composer -R | awk '{print $6}' | awk -F\\' '{print $2}'"
     let l:commandFileFound = l:command . ' | wc -l'
-    let l:numberOfResults = system(l:commandFileFound)
-    if l:numberOfResults == 1
+    let g:numberOfResults = system(l:commandFileFound)
+    if g:numberOfResults == 1
         let l:fileName = system(l:command)
         let l:openFileCommand = 'tabe .' . l:fileName
         exec l:openFileCommand
