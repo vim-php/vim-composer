@@ -65,6 +65,6 @@ function! g:ComposerKnowWhereCurrentFileIs()
         let l:openFileCommand = 'tabe .' . l:fileName
         exec l:openFileCommand
     else
-        echo "No unique file found in composer's generated files"
+        call g:VimComposerCustomBehavior(g:currentWord)
     endif
 endfunction
