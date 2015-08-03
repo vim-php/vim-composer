@@ -25,6 +25,8 @@ endif
 command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
 command! -narg=* ComposerInstall call s:ComposerInstallFunc(<q-args>)
 command! -narg=* ComposerUpdate call s:ComposerUpdateFunc(<q-args>)
+command! -narg=* ComposerRequire call s:ComposerRequireFunc(<q-args>)
+
 command! ComposerGet call s:ComposerGetFunc()
 command! ComposerJSON call s:OpenComposerJSON()
 
@@ -58,6 +60,10 @@ endfunction
 
 function! s:ComposerUpdateFunc(arg)
     exe s:ComposerRunFunc("update")
+endfunction
+
+function! s:ComposerRequireFunc(repo, version)
+    exe s:ComposerRunFunc("require", repo, version)
 endfunction
 
 function! g:ComposerKnowWhereCurrentFileIs()

@@ -29,6 +29,11 @@ In this example after every `composer install` I exec a ctags generation
 This command exec `composer update`.
 
 ```vim
+:ComposerRequireFunc
+```
+This command exec `composer require <vendor/repository> <version>`.
+
+```vim
 :ComposerJSON
 ```
 This command open `composer.json`
