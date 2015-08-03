@@ -24,6 +24,7 @@ endif
 
 command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
 command! -narg=* ComposerInstall call s:ComposerInstallFunc(<q-args>)
+command! -narg=* ComposerUpdate call s:ComposerUpdateFunc(<q-args>)
 command! ComposerGet call s:ComposerGetFunc()
 command! ComposerJSON call s:OpenComposerJSON()
 
@@ -53,6 +54,10 @@ function! s:ComposerInstallFunc(arg)
     if len(g:composer_install_callback) > 0
         exe "call ".g:composer_install_callback."()"
     endif
+endfunction
+
+function! s:ComposerUpdateFunc(arg)
+    exe s:ComposerRunFunc("update")
 endfunction
 
 function! g:ComposerKnowWhereCurrentFileIs()

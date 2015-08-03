@@ -24,6 +24,11 @@ let g:composer_install_callback = "MyCallbackFunction"
 In this example after every `composer install` I exec a ctags generation
 
 ```vim
+:ComposerUpdate [--no-dev ..]
+```
+This command exec `composer update`.
+
+```vim
 :ComposerJSON
 ```
 This command open `composer.json`
