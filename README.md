@@ -15,6 +15,12 @@ This command exec the installation flow of composer's install. This process requ
 :ComposerInstall [--no-dev ..]
 ```
 This command exec `composer install`. Now you can attach after this command a custom callback to exec your personal flow.
+
+```vim
+:ComposerInit [--no-dev ..]
+```
+This command exec `composer init`.
+
 ```vim
 function! MyCallbackFunction()
     exec ':silent ! ctags -a %'
