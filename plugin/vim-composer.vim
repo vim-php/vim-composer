@@ -59,19 +59,16 @@ function! s:ComposerInstallFunc(arg)
     endif
 endfunction
 
-function! s:ComposerInit(arg)
+function! s:ComposerInit()
     exe s:ComposerRunFunc("init")
-    if len(g:composer_install_callback) > 0
-        exe "call ".g:composer_install_callback."()"
-    endif
 endfunction
 
 function! s:ComposerUpdateFunc(arg)
     exe s:ComposerRunFunc("update")
 endfunction
 
-function! s:ComposerRequireFunc(repo, version)
-    exe s:ComposerRunFunc("require", repo, version)
+function! s:ComposerRequireFunc()
+    exe s:ComposerRunFunc("require")
 endfunction
 
 function! g:ComposerKnowWhereCurrentFileIs()
