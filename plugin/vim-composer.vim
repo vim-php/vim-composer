@@ -24,7 +24,7 @@ endif
 
 command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
 command! -narg=* ComposerInstall call s:ComposerInstallFunc(<q-args>)
-command! -narg=* ComposerInit call s:ComposerInit()
+command! -narg=* ComposerInit call s:ComposerInitFunc()
 command! -narg=* ComposerUpdate call s:ComposerUpdateFunc(<q-args>)
 command! -narg=* ComposerRequire call s:ComposerRequireFunc()
 
@@ -59,7 +59,7 @@ function! s:ComposerInstallFunc(arg)
     endif
 endfunction
 
-function! s:ComposerInit()
+function! s:ComposerInitFunc()
     exe s:ComposerRunFunc("init")
 endfunction
 
