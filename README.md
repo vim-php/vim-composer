@@ -10,6 +10,8 @@ To run command for example `:ComposerRun validate` run command validate for your
 :ComposerGet
 ```
 This command exec the installation flow of composer's install. This process require `curl`
+Also remeber that it is possibile run this vim command without enter inside the
+editor: `$ vim -c 'ComposerGet' -c 'q'`
 
 ```vim
 :ComposerInstall [--no-dev ..]
