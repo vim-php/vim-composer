@@ -22,14 +22,15 @@ if !exists("g:composer_cmd")
 endif
 
 
-command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
 command! -narg=* ComposerInstall call s:ComposerInstallFunc(<q-args>)
-command! -narg=* ComposerInit call s:ComposerInitFunc()
+command! -narg=* ComposerRun call s:ComposerRunFunc(<q-args>)
 command! -narg=* ComposerUpdate call s:ComposerUpdateFunc(<q-args>)
-command! -narg=* ComposerRequire call s:ComposerRequireFunc()
 
 command! ComposerGet call s:ComposerGetFunc()
+command! ComposerInit call s:ComposerInitFunc()
 command! ComposerJSON call s:OpenComposerJSON()
+command! ComposerRequire call s:ComposerRequireFunc()
+command! ComposerDumpAutoload call s:ComposerDumpAutoloadFunc()
 
 function! s:ComposerRunFunc(arg)
     let s:arg = a:arg
@@ -69,6 +70,10 @@ endfunction
 
 function! s:ComposerRequireFunc()
     exe s:ComposerRunFunc("require")
+endfunction
+
+function! s:ComposerDumpAutoloadFunc()
+    exe s:ComposerRunFunc("dump-autoload")
 endfunction
 
 function! g:ComposerKnowWhereCurrentFileIs()
