@@ -32,9 +32,10 @@ command! ComposerJSON call s:OpenComposerJSON()
 command! ComposerRequire call s:ComposerRequireFunc()
 command! ComposerDumpAutoload call s:ComposerDumpAutoloadFunc()
 
-function! s:ComposerRunFunc(arg)
-    let s:arg = a:arg
-    exe "!".g:composer_cmd." ".s:arg
+function! s:ComposerRunFunc(action)
+    let s:action = a:action
+    let s:composer = '!' . g:composer_cmd . ' ' . s:action
+    exe s:composer
 endfunction
 
 function! s:ComposerGetFunc()
